@@ -1,3 +1,6 @@
+import { config } from 'dotenv';
+config();
+
 import mysql from "mysql2/promise"
 import { Accountant } from "./client"
 
