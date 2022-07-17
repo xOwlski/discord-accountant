@@ -2,7 +2,7 @@
   "name": "discordbot",
   "version": "1.0.0",
   "description": "Discord Bot",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
     "start": "node -r dotenv/config dist/index.js",
