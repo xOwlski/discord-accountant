@@ -1,4 +1,5 @@
 import { Listener } from "discord-akairo"
+import { syncTwitter } from "../twitter";
 
 export default class ReadyListener extends Listener {
   constructor() {
@@ -9,6 +10,8 @@ export default class ReadyListener extends Listener {
   }
 
   async exec() {
-    console.log(`Logged in as ${this.client.user.tag}!`)
+    console.log(`Logged in as ${this.client.user.tag}!`);
+
+    syncTwitter(this.client);
   }
 }
