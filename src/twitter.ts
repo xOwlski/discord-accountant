@@ -1,4 +1,4 @@
-import { Client, TextChannel } from 'discord.js';
+import { Client, MessageEmbed, TextChannel } from 'discord.js';
 import { TwitterApi, ETwitterStreamEvent } from 'twitter-api-v2';
 import fetch from 'node-fetch';
 import { grantPoints } from 'database/points';
@@ -80,6 +80,14 @@ export const syncTwitter = async (client: Client) => {
                     await grantPoints(client.user, client.users.cache.get(discordId), 10, (client as Accountant).pool);
 
                     console.log(`${discordId} added a response and got rewarded with 10 points!`);
+                    const user = client.users.cache.get(discordId) ?? await client.users.fetch(discordId);
+                    (client.channels.cache.get('998675347925127329') as TextChannel).send({
+                        embed: new MessageEmbed()
+                            .setAuthor(user.tag, user.displayAvatarURL())
+                            .setDescription(`${user.tag} added a Twitter response and got rewarded with 10 points!`)
+                            .setColor('#00ff00')
+                            .setTimestamp()
+                    });
                 }
                 
                 if (eventData.matching_rules[0]?.tag === 'mention') {
@@ -88,6 +96,15 @@ export const syncTwitter = async (client: Client) => {
 
                     console.log(`${discordId} added a mention and got rewarded with 10 points!`);
 
+                    const user = client.users.cache.get(discordId) ?? await client.users.fetch(discordId);
+                    (client.channels.cache.get('998675347925127329') as TextChannel).send({
+                        embed: new MessageEmbed()
+                            .setAuthor(user.tag, user.displayAvatarURL())
+                            .setDescription(`${user.tag} added a Twitter mention and got rewarded with 10 points!`)
+                            .setColor('#00ff00')
+                            .setTimestamp()
+                    });
+
                 }
 
                 if (eventData.matching_rules[0]?.tag === 'retweet') {
@@ -95,6 +112,15 @@ export const syncTwitter = async (client: Client) => {
                     await grantPoints(client.user, client.users.cache.get(discordId), 10, (client as Accountant).pool);
 
                     console.log(`${discordId} added a retweet and got rewarded with 10 points!`);
+
+                    const user = client.users.cache.get(discordId) ?? await client.users.fetch(discordId);
+                    (client.channels.cache.get('998675347925127329') as TextChannel).send({
+                        embed: new MessageEmbed()
+                            .setAuthor(user.tag, user.displayAvatarURL())
+                            .setDescription(`${user.tag} added a Twitter retweet and got rewarded with 10 points!`)
+                            .setColor('#00ff00')
+                            .setTimestamp()
+                    });
 
                 }
             }
