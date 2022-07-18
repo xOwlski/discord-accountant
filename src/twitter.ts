@@ -1,7 +1,7 @@
 import { Client, MessageEmbed, TextChannel } from 'discord.js';
 import { TwitterApi, ETwitterStreamEvent } from 'twitter-api-v2';
 import fetch from 'node-fetch';
-import { grantPoints } from 'database/points';
+import { grantPoints } from './database/points';
 import { Accountant } from 'client';
 
 export const twitterClient = new TwitterApi({
