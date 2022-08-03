@@ -14,11 +14,15 @@ export const POINTS_EMOTE = "<:points:899996311271612345>"
 // "250-1000 points" role for "min: 250"
 // Providing an empty array disables this feature
 export const ROLE_LEVELS = [
-  // { id: "", min: 5000 },
-  // { id: "", min: 1000 },
-  // { id: "", min: 250 },
-  // { id: "", min: 50 },
-  // { id: "", min: 0 },
+    { id: "1004355700455133255", min: 50000 },
+    { id: "1004355686618116097", min: 30000 },
+    { id: "1004355630154387577", min: 20000 },
+    { id: "1004355601226272849", min: 10000 },
+    { id: "1004355576446324796", min: 5000 },
+    { id: "1004355548080250901", min: 1000 },
+    { id: "1004355530321559602", min: 250 },
+    { id: "1004353626241769582", min: 50 },
+    { id: "1004353557648130048", min: 0 },
 ]
 
 // (optional) Bot IDs allowed to interact with this bot
