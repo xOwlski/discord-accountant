@@ -7,7 +7,7 @@ export const PREFIX = "!"
 // Text representation of the points emote used in bot messages
 // You can get this by typing a backslash with the emote e.g. "\:points:"
 // And it'll send it in this format
-export const POINTS_EMOTE = "<:points:899996311271612345>"
+export const POINTS_EMOTE = "<a:COIN:1004373786780520449>"
 
 // IDs for custom roles and the minimum amount of points to acquire each
 // e.g. "50-250 points" role for "min: 50",
