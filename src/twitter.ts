@@ -77,7 +77,7 @@ export const syncTwitter = async (client: Client) => {
 
                 if (eventData.matching_rules.some((rule) => rule.tag === 'response')) {
 
-                    await grantPoints(client.user, client.users.cache.get(discordId), 10, (client as Accountant).pool);
+                    await grantPoints(client.user, client.users.cache.get(discordId), 50, (client as Accountant).pool);
 
                     console.log(`${discordId} added a response and got rewarded with 10 points!`);
                     const user = client.users.cache.get(discordId) ?? await client.users.fetch(discordId);
@@ -92,7 +92,7 @@ export const syncTwitter = async (client: Client) => {
                 
                 if (eventData.matching_rules[0]?.tag === 'mention') {
 
-                    await grantPoints(client.user, client.users.cache.get(discordId), 10, (client as Accountant).pool);
+                    await grantPoints(client.user, client.users.cache.get(discordId), 100, (client as Accountant).pool);
 
                     console.log(`${discordId} added a mention and got rewarded with 10 points!`);
 
@@ -109,7 +109,7 @@ export const syncTwitter = async (client: Client) => {
 
                 if (eventData.matching_rules[0]?.tag === 'retweet') {
 
-                    await grantPoints(client.user, client.users.cache.get(discordId), 10, (client as Accountant).pool);
+                    await grantPoints(client.user, client.users.cache.get(discordId), 75, (client as Accountant).pool);
 
                     console.log(`${discordId} added a retweet and got rewarded with 10 points!`);
 
