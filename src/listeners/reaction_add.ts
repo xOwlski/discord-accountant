@@ -16,7 +16,8 @@ export default class ReadyListener extends Listener {
 
     const points = {
         "💎": 100,
-        "💰": 50
+        "💰": 10,
+        "🪙": 5
     };
 
     const pool = (this.client as Accountant).pool;
