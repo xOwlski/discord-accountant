@@ -1,8 +1,8 @@
 // All guilds
 // For !points and !leaderboard
 export const POINTS_CHECKING_CHANNELS = [
-  "check-your-points",
-  "check-your-ᵽoints",
+  "🗡points",
+  "🗡points",
 ]
 
 // All guilds
