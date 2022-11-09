@@ -1,6 +1,5 @@
 import { Client, MessageEmbed, TextChannel } from 'discord.js';
 import { TwitterApi, ETwitterStreamEvent } from 'twitter-api-v2';
-import fetch from 'node-fetch';
 import { grantPoints } from './database/points';
 import { Accountant } from 'client';
 
@@ -14,17 +13,20 @@ export const twitterClient = new TwitterApi({
 
 export let twitterApp: TwitterApi|null = null;
 
+import { MongoClient } from 'mongodb';
+
+const UserClient = new MongoClient(process.env.NEARCORD_DB);
+const UsersCol = UserClient.db('nearcord').collection('users');
+
 const twitterIdToDiscordId = async (twitterId: string) => {
-    return fetch(`https://twittycord.com/api/getAllUsers?key=${process.env.TWITTYCORD_KEY}`).then((res) => {
-        return res.json().then((users) => {
-            const user = users.find((u) => u.connections.find((t) => t.name === 'twitter').accountId === twitterId);
-            if (user) {
-                return user.userId;
-            }
-            return null;
-        });
-    })
-}
+  const UserObj = await UsersCol.findOne({ 'social.twitter': twitterId });
+
+  if (UserObj) {
+    return UserObj.social.discord;
+  } else {
+    return null;
+  }
+};
 
 export const syncTwitter = async (client: Client) => {
     
